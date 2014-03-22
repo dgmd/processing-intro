@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <script src='processing-1.4.1.js'></script>
+    <style>
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+
+<script>
+var canvas = document.getElementsByTagName('canvas')[0];
+
+function sketch(p) {
+
+    var x, y;
+
+    var gridSize;
+    var gridColor;
+
+    function setup() {
+        p.size(400, 300);
+
+        p.ellipseMode(p.CENTER);
+
+        p.println("width: " + p.width + ", height: " + p.height);
+
+        x = p.width / 2;
+        y = p.height / 2;
+
+        gridSize = 25;
+        gridColor = p.color(0x0000FF, 80);
+
+        //p.noLoop();
+    }
+
+    function draw() {
+        p.fill(0, 15);
+        p.rect(0, 0, p.width, p.height);
+
+        grid(gridSize, gridColor);
+        trace(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+    }
+
+    p.mouseReleased = function() {
+        gridColor = p.color(p.random(255),p.random(255),p.random(255),128);
+    }
+
+    function grid(gridSize, gridColor) {
+        var gridW = p.width / gridSize;
+        var gridH = p.height / gridSize;
+
+        var activeCol = p.floor(p.mouseX / gridSize);
+        var activeRow = p.floor(p.mouseY / gridSize);
+
+        for (var row = 0; row < gridH; row++) {
+            for (var col = 0; col < gridW; col++) {
+                var dotSize = gridSize * p.dist(row, col, activeRow, activeCol) / p.max(gridW, gridH);
+                p.noStroke();
+                p.fill(0, 64);
+                p.rect(col * gridSize, row * gridSize, gridSize, gridSize);
+                p.fill(gridColor);;
+                p.ellipse((col + .5) * gridSize, (row + 0.5) * gridSize, dotSize, dotSize);
+            }
+        }
+    }
+
+    function trace(x1, y1, x2, y2) {
+        p.fill(255);
+        p.stroke(255);
+        p.ellipse(x1, y1, 5, 5);
+        p.line(x1, y1, x2, y2);
+        p.ellipse(x2, y2, 5, 5);
+    }
+
+    p.setup = setup;
+    p.draw = draw;
+
+}
+
+var p = new Processing(canvas, sketch); // actually attach and run the sketch
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+	<head>
+		<script src='processing-1.4.1.js'></script>
+		<style>
+			canvas { outline: none; } /* So that when we click, the canvas isn't outlined */
+		</style>
+	</head>
+
+	<body>
+		<canvas></canvas>
+	</body>
+	
+	<script>
+		var canvas = document.getElementsByTagName('canvas')[0];
+
+		function sketch(p) {
+
+			var msg = "hello world!"
+
+			for (var i = 0; i < 5; i++){
+				p.println(i + ": " + msg)
+			}
+
+		 }
+
+		var p = new Processing(canvas, sketch); // actually attach and run the sketch
+	</script>
+
+</html>
