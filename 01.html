@@ -1,12 +1,18 @@
 <html>
 
+<!--
+The minimal code for incorporating Processing into a web page. Please
+note the Processing object instantiation. The default size of the canvas is
+`100 x 100` pixels.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
-	    canvas {
-	        outline: none;
-	    }
-	    /* So that when we click, the canvas isn't outlined */
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
     </style>
 </head>
 
@@ -15,13 +21,13 @@
 </body>
 
 <script>
-	var canvas = document.getElementsByTagName('canvas')[0];
+var canvas = document.getElementsByTagName('canvas')[0];
 
-	function sketch(p) {
-	    p.println("hello world!");
-	}
+function sketch(p) {
+    p.println("hello world!");
+}
 
-	var p = new Processing(canvas, sketch); // actually attach and run the sketch
+var p = new Processing(canvas, sketch); // attach & run sketch
 </script>
 
 </html>

@@ -1,5 +1,13 @@
 <html>
 
+<!--
+Note that by a simple change in how the background of the sketch is
+refreshed, we can have the ball leave a small trail behind.
+
+Instead of drawing a solid color into the background of the sketch, draw a
+rectangle the size of the background with a fill color with a transparency.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,8 +27,8 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;          // ball's position
-    var direction;     // ball's directon
+    var x, y; // ball's position
+    var direction; // ball's directon
 
     function setup() {
         p.size(200, 200);
@@ -29,8 +37,8 @@ function sketch(p) {
 
         p.println("width: " + p.width + ", height: " + p.height);
 
-	   	x = p.width / 2;
-		y = p.height / 2;
+        x = p.width / 2;
+        y = p.height / 2;
         direction = 1;
 
         //p.noLoop();
@@ -39,21 +47,21 @@ function sketch(p) {
     function draw() {
         // p.background(0);
         // leaving a trail behind
-        p.fill(0,15);
-        p.rect(0,0,p.width,p.height);
+        p.fill(0, 15);
+        p.rect(0, 0, p.width, p.height);
 
         if (p.frameCount < 60) {
             // a delay....
         } else {
-            ball(x,y);
+            ball(x, y);
             y += 2 * direction;
-            if ((y > p.height) || (y<0)) {
-                 direction *= -1;
+            if ((y > p.height) || (y < 0)) {
+                direction *= -1;
             }
         }
     }
 
-    function ball(x,y) {
+    function ball(x, y) {
         // p.println("drawing ball...");           
         p.fill(255);
         p.noStroke();

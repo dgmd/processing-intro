@@ -1,5 +1,22 @@
 <html>
 
+<!--
+#### Notes
+
+1. The variable `direction` holds the direction of the ball’s motion. It is
+used [on line 48](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/07.html#L48) to change the sign of the change to the
+amount by which the `y` position of the ball is changed [on line
+46](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/07.html#L46).
+
+2. [Line 48](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/07.html#L48) is run only if the ball moves outside the
+bounds of the sketch as determined by testing its `y` position compared to the
+top and bottom of the sketch on line 47. (`||` is a [logical
+OR](http://processingjs.org/learning/basic/logicaloperators/).)
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,7 +36,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;
+    var x, y;
     var direction;
 
     function setup() {
@@ -29,8 +46,8 @@ function sketch(p) {
 
         p.println("width: " + p.width + ", height: " + p.height);
 
-	   	x = p.width / 2;
-		y = p.height / 2;
+        x = p.width / 2;
+        y = p.height / 2;
         direction = 1;
 
         drawPattern();
@@ -42,10 +59,10 @@ function sketch(p) {
         if (p.frameCount < 60) {
             drawPattern();
         } else {
-            ball(x,y);
+            ball(x, y);
             y += 2 * direction;
-            if ((y > p.height) || (y<0)) {
-                 direction *= -1;
+            if ((y > p.height) || (y < 0)) {
+                direction *= -1;
             }
         }
     }
@@ -66,7 +83,7 @@ function sketch(p) {
     }
 
 
-    function ball(x,y) {
+    function ball(x, y) {
         // p.println("drawing ball...");           
         p.fill(255);
         p.noStroke();

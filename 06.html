@@ -1,5 +1,21 @@
 <html>
 
+<!--
+#### Notes
+
+1. The `x` and `y` variables will hold the position of the ball. You can see
+this [on line 42](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/06.html#L42) where they are being passed in ball as
+arguments and [on line 67](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/06.html#L67) where the arguments are used to set the
+position of the center of the ellipse representing the ball.
+
+2. As you can see [on line 43](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/06.html#L43), every animation frame, we change the `y`
+position of the ball by one pixel. This means that the ball will move
+downwards at roughly 60 (frame rate) pixels per second.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,15 +35,15 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;
+    var x, y;
 
     function setup() {
         p.size(200, 200);
 
         p.ellipseMode(p.CENTER);
 
-	   	x = p.width / 2;
-		y = p.height / 2;
+        x = p.width / 2;
+        y = p.height / 2;
         p.println("width: " + p.width + ", height: " + p.height);
 
         drawPattern();
@@ -39,7 +55,7 @@ function sketch(p) {
         if (p.frameCount < 120) {
             drawPattern();
         } else {
-            ball(x,y);
+            ball(x, y);
             y += 1;
         }
     }
@@ -60,8 +76,8 @@ function sketch(p) {
     }
 
 
-    function ball(x,y) {
-		// p.println("drawing ball...");			
+    function ball(x, y) {
+        // p.println("drawing ball...");            
         p.fill(255);
         p.noStroke();
         p.ellipse(x, y, 25, 25);

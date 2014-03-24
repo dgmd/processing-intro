@@ -1,5 +1,12 @@
 <html>
 
+<!--
+A simple animation in which the ball follows the mouse and leaves a small
+trail behind. Note that the ball's (ellipse's) position is set to the mouse
+position in [line 42](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/09.html#L42).
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,7 +26,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;
+    var x, y;
 
     function setup() {
         p.size(200, 200);
@@ -30,19 +37,19 @@ function sketch(p) {
 
         x = p.width / 2;
         y = p.height / 2;
-        
+
         //p.noLoop();
     }
 
     function draw() {
         // p.background(0);
-        p.fill(0,15);
-        p.rect(0,0,p.width,p.height);
+        p.fill(0, 15);
+        p.rect(0, 0, p.width, p.height);
 
         trace(p.mouseX, p.mouseY, 25, 25);
     }
 
-    function trace(x,y) {
+    function trace(x, y) {
         p.fill(255);
         p.noStroke();
         p.ellipse(x, y, 25, 25);

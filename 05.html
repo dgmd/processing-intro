@@ -1,73 +1,87 @@
 <html>
 
-	<head>
-		<script src='processing-1.4.1.js'></script>
-		<style>
-			canvas { outline: none; } /* So that when we click, the canvas isn't outlined */
-		</style>
-	</head>
+<!--
+#### Notes
 
-	<body>
-		<canvas></canvas>
-	</body>
-	
-	<script>
-		var canvas = document.getElementsByTagName('canvas')[0];
+1. We can use `frameCount` to control what is drawn in specific frames. in
+this case we ensure that a test pattern is drawn to the screen for the first
+120 frames of the animation (which roughly corresponds to two seconds).
 
-		function sketch(p) {
+2. After the opening pattern is shown for roughly two seconds, a ball is drawn
+at the center of the canvas.
+-->
 
-			function setup() {
-				p.size(200, 200);
-				p.background(0);		// set the background color to black
+<head>
+    <script src='processing-1.4.1.js'></script>
+    <style>
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
+    </style>
+</head>
 
-				p.ellipseMode(p.CENTER);
+<body>
+    <canvas></canvas>
+</body>
 
-				p.println("width: " + p.width + ", height: " + p.height);
+<script>
+var canvas = document.getElementsByTagName('canvas')[0];
 
-				drawPattern();
-				//p.noLoop();
-			}
+function sketch(p) {
 
-			function draw() {
-				p.background(0);
+    function setup() {
+        p.size(200, 200);
+        p.background(0); // set the background color to black
 
-				if (p.frameCount < 120) {
-					drawPattern();
-				} else {
-					ball();	
-				}
-			}
+        p.ellipseMode(p.CENTER);
 
-			function drawPattern() {
-				p.println("drawing test pattern...")
-				p.stroke(0,0,255);		// set the stroke color to blue
-				p.line(10, 10, p.width/2 - 10, p.height/2 - 10);	// draw a line from (10,10) to (90,90)
+        p.println("width: " + p.width + ", height: " + p.height);
 
-				p.stroke(0,255,0);		// set the stroke color to green
-				p.line(p.width/2 + 10, p.height/2 + 10, p.width - 10, p.height - 10); // draw a line from (110,110) to (190,190)
+        drawPattern();
+        //p.noLoop();
+    }
 
-				p.stroke(255,0,0);		// set the stroke color to red
-				p.line(p.width - 10, 10, p.width/2 + 10 , p.height/2 - 10);	 // draw a line from (190,10) to (110,90)
+    function draw() {
+        p.background(0);
 
-				p.stroke(255,255,0);		// set the stroke color to yellow
-				p.line(p.width/2 - 10, p.height/2 + 10, 10, p.height - 10);
-			}
+        if (p.frameCount < 120) {
+            drawPattern();
+        } else {
+            ball();
+        }
+    }
+
+    function drawPattern() {
+        p.println("drawing test pattern...")
+        p.stroke(0, 0, 255); // set the stroke color to blue
+        p.line(10, 10, p.width / 2 - 10, p.height / 2 - 10); // draw a line from (10,10) to (90,90)
+
+        p.stroke(0, 255, 0); // set the stroke color to green
+        p.line(p.width / 2 + 10, p.height / 2 + 10, p.width - 10, p.height - 10); // draw a line from (110,110) to (190,190)
+
+        p.stroke(255, 0, 0); // set the stroke color to red
+        p.line(p.width - 10, 10, p.width / 2 + 10, p.height / 2 - 10); // draw a line from (190,10) to (110,90)
+
+        p.stroke(255, 255, 0); // set the stroke color to yellow
+        p.line(p.width / 2 - 10, p.height / 2 + 10, 10, p.height - 10);
+    }
 
 
-			function ball() {
-				p.println("drawing ball...");			
-				p.fill(255);
-				p.noStroke();
-				p.ellipse(p.width/2,p.height/2,25,25);
+    function ball() {
+        p.println("drawing ball...");
+        p.fill(255);
+        p.noStroke();
+        p.ellipse(p.width / 2, p.height / 2, 25, 25);
 
-			}
+    }
 
-			p.setup = setup;
-			p.draw = draw;
+    p.setup = setup;
+    p.draw = draw;
 
-		 }
+}
 
-		var p = new Processing(canvas, sketch); // actually attach and run the sketch
-	</script>
+var p = new Processing(canvas, sketch); // actually attach and run the sketch
+</script>
 
 </html>

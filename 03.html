@@ -1,39 +1,49 @@
 <html>
 
-	<head>
-		<script src='processing-1.4.1.js'></script>
-		<style>
-			canvas { outline: none; } /* So that when we click, the canvas isn't outlined */
-		</style>
-	</head>
+<!--
+Setting the basic attributes of the sketch; for example, note the
+Processing commands for setting the size of the sketch and the background
+color of its canvas. Our canvas shows up when these commands are run. In the
+inspector, note how the canvas tag is updated.
+-->
 
-	<body>
-		<canvas></canvas>
-	</body>
-	
-	<script>
-		var canvas = document.getElementsByTagName('canvas')[0];
+<head>
+    <script src='processing-1.4.1.js'></script>
+    <style>
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
+    </style>
+</head>
 
-		function sketch(p) {
+<body>
+    <canvas></canvas>
+</body>
 
-			p.println("The basic sketch!");
+<script>
+var canvas = document.getElementsByTagName('canvas')[0];
 
-			function setup() {
-				p.size(200, 200);
-				p.background(0);		// set the background color to black
-				// p.noLoop();
-			}
+function sketch(p) {
 
-			function draw() {
-				p.println("running draw!");
-			}
+    p.println("The basic sketch!");
 
-			p.setup = setup;			
-			p.draw = draw;
+    function setup() {
+        p.size(200, 200);
+        p.background(0); // set the background color to black
+        // p.noLoop();
+    }
 
-		 }
+    function draw() {
+        p.println("running draw!");
+    }
 
-		var p = new Processing(canvas, sketch); // actually attach and run the sketch
-	</script>
+    p.setup = setup;
+    p.draw = draw;
+
+}
+
+var p = new Processing(canvas, sketch); // attach & run sketch
+</script>
 
 </html>

@@ -1,58 +1,84 @@
 <html>
 
-	<head>
-		<script src='processing-1.4.1.js'></script>
-		<style>
-			canvas { outline: none; } /* So that when we click, the canvas isn't outlined */
-		</style>
-	</head>
+<!--
+#### Notes
 
-	<body>
-		<canvas></canvas>
-	</body>
-	
-	<script>
-		var canvas = document.getElementsByTagName('canvas')[0];
+1. After calling `size()`, the environment variables width and height hold the
+dimensions of the sketch.
 
-		function sketch(p) {
+2. By default the `draw()` function is called repeatedly, and in this case,
+prints the frame rate that processing is aiming to maintain. The default frame
+rate is `60 fps`.
 
-			p.println("The drawing functions!");
+3. Processing offers a wide range of drawing functions that you can play
+around with. Please consult the [online
+documentation](http://processingjs.org/reference/)
 
-			function setup() {
-				p.size(200, 200);
-				p.background(0);		// set the background color to black
+4. If you uncomment the [`noLoop()` line (#27)](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/04.html#L27), you will see that `draw()`
+is then only run once.
 
-				p.println("width: " + p.width + ", height: " + p.height);
-			
-				//p.noLoop();
-			}
+5. The JavaScript functions `draw()` and `setup()` can be renamed to anything
+we wish. The function names that we assign to `p.setup` and `p.draw` determine
+the behavior of the Processing sketch.
+-->
 
-			function draw() {
-				p.background(0);
-				drawPattern();
-				p.println(p.frameCount + " ");
-			}
+<head>
+    <script src='processing-1.4.1.js'></script>
+    <style>
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
+    </style>
+</head>
 
-			function drawPattern() {
-				p.stroke(0,0,255);		// set the stroke color to blue
-				p.line(10, 10, p.width/2 - 10, p.height/2 - 10);	// draw a line from (10,10) to (90,90)
+<body>
+    <canvas></canvas>
+</body>
 
-				p.stroke(0,255,0);		// set the stroke color to green
-				p.line(p.width/2 + 10, p.height/2 + 10, p.width - 10, p.height - 10); // draw a line from (110,110) to (190,190)
+<script>
+var canvas = document.getElementsByTagName('canvas')[0];
 
-				p.stroke(255,0,0);		// set the stroke color to red
-				p.line(p.width - 10, 10, p.width/2 + 10 , p.height/2 - 10);	 // draw a line from (190,10) to (110,90)
+function sketch(p) {
 
-				p.stroke(255,255,0);		// set the stroke color to yellow
-				p.line(p.width/2 - 10, p.height/2 + 10, 10, p.height - 10);
-			}
+    p.println("The drawing functions!");
 
-			p.setup = setup;
-			p.draw = draw;
+    function setup() {
+        p.size(200, 200);
+        p.background(0); // set the background color to black
 
-		 }
+        p.println("width: " + p.width + ", height: " + p.height);
 
-		var p = new Processing(canvas, sketch); // actually attach and run the sketch
-	</script>
+        //p.noLoop();
+    }
+
+    function draw() {
+        p.background(0);
+        drawPattern();
+        p.println(p.frameCount + " ");
+    }
+
+    function drawPattern() {
+        p.stroke(0, 0, 255); // set the stroke color to blue
+        p.line(10, 10, p.width / 2 - 10, p.height / 2 - 10); // draw a line from (10,10) to (90,90)
+
+        p.stroke(0, 255, 0); // set the stroke color to green
+        p.line(p.width / 2 + 10, p.height / 2 + 10, p.width - 10, p.height - 10); // draw a line from (110,110) to (190,190)
+
+        p.stroke(255, 0, 0); // set the stroke color to red
+        p.line(p.width - 10, 10, p.width / 2 + 10, p.height / 2 - 10); // draw a line from (190,10) to (110,90)
+
+        p.stroke(255, 255, 0); // set the stroke color to yellow
+        p.line(p.width / 2 - 10, p.height / 2 + 10, 10, p.height - 10);
+    }
+
+    p.setup = setup;
+    p.draw = draw;
+
+}
+
+var p = new Processing(canvas, sketch); // actually attach and run the sketch
+</script>
 
 </html>

@@ -1,5 +1,11 @@
 <html>
 
+<!--
+The shape and location of the triangle drawn when the key `0` is held
+down is determined by [the JSON data provided](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/16.html#L26-30).
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,14 +25,14 @@
 
 var canvas = document.getElementsByTagName('canvas')[0];
 
-var data = {}; 
+var data = {};
 
 function sketch(p) {
 
     data = {
-        '1': [8,4],
-        '2': [8,10],
-        '3': [10,7]
+        '1': [8, 4],
+        '2': [8, 10],
+        '3': [10, 7]
     }
 
     var gridSize;
@@ -67,19 +73,19 @@ function sketch(p) {
         p.rect(p.width / 2, p.height / 2, p.width, p.height);
 
         grid(gridSize, gridColor, activeRow, activeCol);
-        trace(activeCol*gridSize, activeRow*gridSize, pactiveCol*gridSize, pactiveRow*gridSize);
-        
+        trace(activeCol * gridSize, activeRow * gridSize, pactiveCol * gridSize, pactiveRow * gridSize);
+
         txtW = p.textWidth(txt);
         p.fill(255);
-        p.text(txt, ((activeCol-0.5)*gridSize), ((activeRow-0.5)*gridSize));
+        p.text(txt, ((activeCol - 0.5) * gridSize), ((activeRow - 0.5) * gridSize));
         //p.println(p.__frameRate);
 
         if (p.__keyPressed && (p.keyCode == '0')) {
             p.stroke(gridColor);
             p.noFill();
             p.strokeWeight(5);
-            p.triangle(data[1][0]*gridSize,data[1][1]*gridSize,data[2][0]*gridSize,
-                data[2][1]*gridSize,data[3][0]*gridSize,data[3][1]*gridSize);
+            p.triangle(data[1][0] * gridSize, data[1][1] * gridSize, data[2][0] * gridSize,
+                data[2][1] * gridSize, data[3][0] * gridSize, data[3][1] * gridSize);
             p.strokeWeight(1);
         }
     }

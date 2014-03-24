@@ -1,5 +1,16 @@
 <html>
 
+<!--
+Processing not only makes it easy to get the current mouse position
+(`mouseX`, `mouseY`) but also saves the previous mouse position in the
+variables `pmouseX` and `pmouseY`.
+
+By drawing a line from the current position of the mouse to its previous
+position, we can make a simple paint program. Note that to leave a trail on
+the canvas permanently, [lines 39 and 40](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/10.html#L39-40) need to be commented out.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,7 +30,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;
+    var x, y;
 
     function setup() {
         p.size(200, 200);
@@ -36,18 +47,18 @@ function sketch(p) {
 
     function draw() {
         // p.background(0);
-        p.fill(0,15);
-        p.rect(0,0,p.width,p.height);
+        p.fill(0, 15);
+        p.rect(0, 0, p.width, p.height);
 
         trace(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
     }
 
-    function trace(x1,y1,x2,y2) {
+    function trace(x1, y1, x2, y2) {
         p.fill(255);
         p.stroke(255);
         p.ellipse(x1, y1, 5, 5);
-        p.line(x1,y1,x2,y2);
-        p.ellipse(x2, y2, 5, 5);        
+        p.line(x1, y1, x2, y2);
+        p.ellipse(x2, y2, 5, 5);
     }
 
     p.setup = setup;

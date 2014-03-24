@@ -1,5 +1,11 @@
 <html>
 
+<!--
+Each time the mouse is released, [line 53](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/12.html#L53) is run which changes the
+color used for drawing the grid.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -49,7 +55,7 @@ function sketch(p) {
     }
 
     p.mouseReleased = function() {
-        gridColor = p.color(p.random(255),p.random(255),p.random(255),128);
+        gridColor = p.color(p.random(255), p.random(255), p.random(255), 128);
     }
 
     function grid(gridSize, gridColor) {

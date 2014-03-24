@@ -1,5 +1,29 @@
 <html>
 
+<!--
+#### Notes
+
+1. In [lines 53-62](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/11.html#L53-62), we draw a regular grid where in each
+cell we have a squares with a circle at its centers.
+
+2. The size of the circle drawn at a grid position depends on its distance
+from the mouse’s position. (lines [55](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/11.html#L55) and
+[60](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/11.html#L60)).
+
+3. Change [line 55](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/11.html#L55) to `var dotSize = gridSize;` to see a
+version of the grid that is not interactive.
+
+4. The distances are measured in `gridSize` units, and that is why we multiply
+them by the grid size to draw them in the correct `px` dimensions in commands
+on lines like [58](https://github.com/DGMD-E-15/Processing-
+Tutorial-01/blob/master/11.html#L58) and [60](https://github.com/DGMD-E-15
+/Processing-Tutorial-01/blob/master/11.html#L60).
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -19,7 +43,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
 
 function sketch(p) {
 
-	var x, y;
+    var x, y;
 
     function setup() {
         p.size(400, 300);
@@ -28,16 +52,16 @@ function sketch(p) {
 
         p.println("width: " + p.width + ", height: " + p.height);
 
-	   	x = p.width / 2;
-		y = p.height / 2;
+        x = p.width / 2;
+        y = p.height / 2;
 
         //p.noLoop();
     }
 
     function draw() {
         // p.background(0);
-        p.fill(0,15);
-        p.rect(0,0,p.width,p.height);
+        p.fill(0, 15);
+        p.rect(0, 0, p.width, p.height);
 
         grid(25);
         trace(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
@@ -50,24 +74,24 @@ function sketch(p) {
         var activeCol = p.floor(p.mouseX / gridSize);
         var activeRow = p.floor(p.mouseY / gridSize);
 
-        for (var row = 0; row < gridH; row++ ) {
-            for (var col = 0; col < gridW; col++ ) {
-                var dotSize = gridSize * p.dist(row,col,activeRow,activeCol) / p.max(gridW,gridH);
+        for (var row = 0; row < gridH; row++) {
+            for (var col = 0; col < gridW; col++) {
+                var dotSize = gridSize * p.dist(row, col, activeRow, activeCol) / p.max(gridW, gridH);
                 p.noStroke();
-                p.fill(0,64);
-                p.rect(col*gridSize,row*gridSize,gridSize,gridSize);
-                p.fill(0,0,255,128);
-                p.ellipse((col+.5)*gridSize,(row+0.5)*gridSize,dotSize,dotSize);
-            }            
+                p.fill(0, 64);
+                p.rect(col * gridSize, row * gridSize, gridSize, gridSize);
+                p.fill(0, 0, 255, 128);
+                p.ellipse((col + .5) * gridSize, (row + 0.5) * gridSize, dotSize, dotSize);
+            }
         }
     }
 
-    function trace(x1,y1,x2,y2) {
+    function trace(x1, y1, x2, y2) {
         p.fill(255);
         p.stroke(255);
         p.ellipse(x1, y1, 5, 5);
-        p.line(x1,y1,x2,y2);
-        p.ellipse(x2, y2, 5, 5);        
+        p.line(x1, y1, x2, y2);
+        p.ellipse(x2, y2, 5, 5);
     }
 
     p.setup = setup;

@@ -1,5 +1,24 @@
 <html>
 
+<!--
+#### Notes
+
+1. Processing provided listeners for a variety of mouse events. We have
+written functions for handling the events fired when the mouse is pressed,
+released, moved, or dragged.
+
+2. The dots closest to the mouse position are the smallest when the mouse is
+moved (but not dragged)
+
+3. But when the mouse is dragged, the dots closest to the mouse position are
+largest.
+
+4. Refinements: The mouse getting pressed changes the color of the grid and
+flips the behavior in (2) so that the dots closest to the mouse are largest.
+And when the mouse is released, the dots closest to the mouse become smaller
+again.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -54,7 +73,7 @@ function sketch(p) {
 
     p.mousePressed = function() {
         p.mouseDragged();
-        gridColor = p.color(p.random(255),p.random(255),p.random(255),128);
+        gridColor = p.color(p.random(255), p.random(255), p.random(255), 128);
     }
 
     p.mouseReleased = function() {
@@ -79,7 +98,7 @@ function sketch(p) {
             for (var col = 0; col < gridW; col++) {
                 var dotSize;
                 if (typeof(activeCol) == 'undefined' || typeof(activeRow) == 'undefined') {
-                     dotSize = gridSize * 0.9;                
+                    dotSize = gridSize * 0.9;
                 } else {
                     dotSize = gridSize * p.dist(row, col, activeRow, activeCol) / p.max(gridW, gridH);
                 }

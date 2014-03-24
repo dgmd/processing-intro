@@ -1,30 +1,37 @@
 <html>
 
-	<head>
-		<script src='processing-1.4.1.js'></script>
-		<style>
-			canvas { outline: none; } /* So that when we click, the canvas isn't outlined */
-		</style>
-	</head>
+<!--
+We are here using Processing as an in-page JavaScript console.
+-->
 
-	<body>
-		<canvas></canvas>
-	</body>
-	
-	<script>
-		var canvas = document.getElementsByTagName('canvas')[0];
+<head>
+    <script src='processing-1.4.1.js'></script>
+    <style>
+    canvas {
+        outline: none;
+    }
+    /* So that when we click, the canvas isn't outlined */
+    </style>
+</head>
 
-		function sketch(p) {
+<body>
+    <canvas></canvas>
+</body>
 
-			var msg = "hello world!"
+<script>
+var canvas = document.getElementsByTagName('canvas')[0];
 
-			for (var i = 0; i < 5; i++){
-				p.println(i + ": " + msg)
-			}
+function sketch(p) {
 
-		 }
+    var msg = "hello world!"
 
-		var p = new Processing(canvas, sketch); // actually attach and run the sketch
-	</script>
+    for (var i = 0; i < 5; i++) {
+        p.println(i + ": " + msg)
+    }
+
+}
+
+var p = new Processing(canvas, sketch); // attach & run sketch
+</script>
 
 </html>

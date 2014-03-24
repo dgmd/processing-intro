@@ -1,5 +1,15 @@
 <html>
 
+<!--
+#### Notes
+
+1. We are using the arrow keys to move the white dot around.
+
+2. Also a mouse interaction enhancement: when dragging the mouse, the dot
+appears at point opposite to the mouse position with respect to the center of
+the canvas.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -49,15 +59,15 @@ function sketch(p) {
 
     function draw() {
         p.fill(0, 15);
-        p.rect(p.width/2, p.height/2, p.width, p.height);
+        p.rect(p.width / 2, p.height / 2, p.width, p.height);
 
         grid(gridSize, gridColor, activeRow, activeCol);
-        trace(activeCol*gridSize, activeRow*gridSize, pactiveCol*gridSize, pactiveRow*gridSize);
+        trace(activeCol * gridSize, activeRow * gridSize, pactiveCol * gridSize, pactiveRow * gridSize);
     }
 
     p.mousePressed = function() {
         p.mouseDragged();
-        gridColor = p.color(p.random(255),p.random(255),p.random(255),128);
+        gridColor = p.color(p.random(255), p.random(255), p.random(255), 128);
     }
 
     p.mouseReleased = function() {
@@ -85,24 +95,24 @@ function sketch(p) {
         pactiveRow = activeRow;
 
         switch (p.keyCode) {
-          case 37:
-            activeCol -= 1;
-            if (activeCol < 0.5) activeCol = 0.5;
-            break;
-          case 39:
-            activeCol += 1;
-            if (activeCol > gridW - 0.5) activeCol = gridW - 0.5;
-            break;
-          case 38:
-            activeRow -= 1;
-            if (activeRow < 0.5) activeRow = 0.5;
-            break;
-          case 40:
-            activeRow += 1;
-            if (activeRow > gridH - 0.5) activeRow = gridH - 0.5;
-            break;
-          default:
-            break;
+            case 37:
+                activeCol -= 1;
+                if (activeCol < 0.5) activeCol = 0.5;
+                break;
+            case 39:
+                activeCol += 1;
+                if (activeCol > gridW - 0.5) activeCol = gridW - 0.5;
+                break;
+            case 38:
+                activeRow -= 1;
+                if (activeRow < 0.5) activeRow = 0.5;
+                break;
+            case 40:
+                activeRow += 1;
+                if (activeRow > gridH - 0.5) activeRow = gridH - 0.5;
+                break;
+            default:
+                break;
         }
     }
 
@@ -114,7 +124,7 @@ function sketch(p) {
             for (var col = 0.5; col < gridW; col++) {
                 var dotSize;
                 if (typeof(activeCol) == 'undefined' || typeof(activeRow) == 'undefined') {
-                     dotSize = gridSize * 0.9;                
+                    dotSize = gridSize * 0.9;
                 } else {
                     dotSize = gridSize * p.dist(row, col, activeRow, activeCol) / p.max(gridW, gridH);
                 }

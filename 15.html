@@ -1,5 +1,11 @@
 <html>
 
+<!--
+When a letter of alphabet is typed on the keyboard, the letter appears
+next to the active cell in the grid. The drawn letter is updated when a new
+key is pressed.
+-->
+
 <head>
     <script src='processing-1.4.1.js'></script>
     <style>
@@ -58,11 +64,11 @@ function sketch(p) {
         p.rect(p.width / 2, p.height / 2, p.width, p.height);
 
         grid(gridSize, gridColor, activeRow, activeCol);
-        trace(activeCol*gridSize, activeRow*gridSize, pactiveCol*gridSize, pactiveRow*gridSize);
-        
+        trace(activeCol * gridSize, activeRow * gridSize, pactiveCol * gridSize, pactiveRow * gridSize);
+
         txtW = p.textWidth(txt);
         p.fill(255);
-        p.text(txt, ((activeCol-0.5)*gridSize), ((activeRow-0.5)*gridSize));
+        p.text(txt, ((activeCol - 0.5) * gridSize), ((activeRow - 0.5) * gridSize));
         //p.println(p.__frameRate);
     }
 
